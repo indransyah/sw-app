@@ -21,9 +21,3 @@ Start app on `http://localhost:8080/`
 Start app on development mode `http://localhost:8080/`
 
 `$ npm run dev`
-
-## Build
-
-Only build assets and scripts on `/dist`
-
-`$ npm run build`
