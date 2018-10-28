@@ -17,12 +17,18 @@ import TopNav from './../components/TopNav';
 class People extends React.Component {
   constructor(props) {
     super(props);
-    this.handleIndexChange = this.handleIndexChange.bind(this);
+    this.state = {
+      name: 'First',
+    };
+    // this.handleIndexChange = this.handleIndexChange.bind(this);
   }
 
   componentDidMount() {
     const { dispatch, match } = this.props;
     dispatch(fetchPerson(match.params.id));
+    setInterval(() => {
+      this.setState({ name: 'Last' });
+    }, 5000);
   }
 
   componentWillUnmount() {
@@ -84,20 +90,20 @@ class People extends React.Component {
         <Container fluid={true}>
           <Row>
             <Col sm="12">
-              <h1>{person.name}</h1>
+              <h1>{this.state.name}</h1>
             </Col>
             <Col sm="12">
               <Row>
                 <CardColumns style={{ marginBottom: '1rem' }}>
                   <CardItem
                     name="profile"
-                    isLoading={isPersonFetching}
-                    data={person}
+                    // isLoading={isPersonFetching}
+                    data={[]}
                   />
                   <CardItem
                     name="homeworld"
-                    isLoading={isPersonFetching || isPlanetFetching}
-                    data={planet}
+                    // isLoading={isPersonFetching || isPlanetFetching}
+                    data={[]}
                   />
                   <CardDesc
                     name="films"
@@ -105,7 +111,8 @@ class People extends React.Component {
                     data={film}
                     selectedIndex={selectedFilmIndex}
                     length={person.films && person.films.length}
-                    handleIndexChange={this.handleIndexChange}
+                    handleIndexChange={this.handleIndexChange.bind(this)}
+                    // handleIndexChange={this.handleIndexChange}
                   />
                 </CardColumns>
                 <CardColumns>
@@ -115,7 +122,8 @@ class People extends React.Component {
                     data={species}
                     selectedIndex={selectedSpeciesIndex}
                     length={person.species && person.species.length}
-                    handleIndexChange={this.handleIndexChange}
+                    handleIndexChange={this.handleIndexChange.bind(this)}
+                    // handleIndexChange={this.handleIndexChange}
                   />
                   <CardItem
                     name="vehicles"
@@ -123,7 +131,8 @@ class People extends React.Component {
                     data={vehicle}
                     selectedIndex={selectedVehicleIndex}
                     length={person.vehicles && person.vehicles.length}
-                    handleIndexChange={this.handleIndexChange}
+                    handleIndexChange={this.handleIndexChange.bind(this)}
+                    // handleIndexChange={this.handleIndexChange}
                   />
                   <CardItem
                     name="starships"
@@ -131,7 +140,8 @@ class People extends React.Component {
                     data={starship}
                     selectedIndex={selectedStarshipIndex}
                     length={person.starships && person.starships.length}
-                    handleIndexChange={this.handleIndexChange}
+                    handleIndexChange={this.handleIndexChange.bind(this)}
+                    // handleIndexChange={this.handleIndexChange}
                   />
                 </CardColumns>
               </Row>
