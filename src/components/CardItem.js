@@ -23,24 +23,22 @@ export default function CardItem(props) {
         {!props.isLoading && !Object.keys(props.data).length && <Empty />}
         {!props.isLoading && (
           <React.Fragment>
-            <CardText>
-              <Form>
-                {Object.keys(props.data)
-                  .filter(v => !Array.isArray(props.data[v]))
-                  .map(v => (
-                    <FormGroup key={v} row>
-                      <Label sm={5}>
-                        {v
-                          .replace(/_/g, ' ')
-                          .replace(/(^| )(\w)/g, c => ` ${c.toUpperCase()}`)}
-                      </Label>
-                      <Col sm={7}>
-                        <Input bsSize="sm" value={props.data[v]} readOnly />
-                      </Col>
-                    </FormGroup>
-                  ))}
-              </Form>
-            </CardText>
+            <Form>
+              {Object.keys(props.data)
+                .filter(v => !Array.isArray(props.data[v]))
+                .map(v => (
+                  <FormGroup key={v} row>
+                    <Label sm={5}>
+                      {v
+                        .replace(/_/g, ' ')
+                        .replace(/(^| )(\w)/g, c => ` ${c.toUpperCase()}`)}
+                    </Label>
+                    <Col sm={7}>
+                      <Input bsSize="sm" value={props.data[v]} readOnly />
+                    </Col>
+                  </FormGroup>
+                ))}
+            </Form>
             {!!props.length && (
               <CardPagination
                 selectedIndex={props.selectedIndex}

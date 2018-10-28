@@ -88,7 +88,7 @@ class Home extends React.Component {
                   </tr>
                   {!isFetching &&
                     data.map((v, i) => (
-                      <tr>
+                      <tr key={i}>
                         <th scope="row">{this.getLastUrlPath(v.url)}</th>
                         <td>{v.name}</td>
                         <td>{v.birth_year}</td>
